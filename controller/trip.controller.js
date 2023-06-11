@@ -47,9 +47,27 @@ exports.sortHigh=async( req, res )=>{
         return res.status(500).send({"msg":err.message})
     }
 }
+exports.sortHigh2=async( req, res )=>{
+    try{
+       const rest=await TripModel.find().sort({members: -1});
+       return res.status(200).send(rest)
+    }
+    catch(err){
+        return res.status(500).send({"msg":err.message})
+    }
+}
 exports.sortlow=async( req, res )=>{
     try{
        const rest=await TripModel.find().sort({budget: 1});
+       return res.status(200).send(rest)
+    }
+    catch(err){
+        return res.status(500).send({"msg":err.message})
+    }
+}
+exports.sortlow2=async( req, res )=>{
+    try{
+       const rest=await TripModel.find().sort({members: 1});
        return res.status(200).send(rest)
     }
     catch(err){
